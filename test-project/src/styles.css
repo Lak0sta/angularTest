@@ -19,7 +19,9 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
   vertical-align: baseline;
-  font-family: 'Paytone One', sans-serif;
+}
+body {
+  background: #ADBE55;
 }
 /* font-family: 'Gloria Hallelujah', cursive;
 font-family: 'Titan One', cursive;
@@ -46,4 +48,10 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+.dx-checkbox-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

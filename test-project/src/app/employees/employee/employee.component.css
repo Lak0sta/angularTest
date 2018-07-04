@@ -1,0 +1,37 @@
+.employee {
+  display: flex;
+}
+
+.employee__check {
+  flex: 1;
+}
+
+.employee__logo {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-family: 'Paytone One', sans-serif;
+  color: #E37B37;
+  flex: 3;
+}
+
+.employee__name {
+  margin-left: 15px;
+}
+
+.employee__contacts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 18px;
+  flex: 3;
+}
+
+.employee__contacts-link {
+  color: #E37B37;
+}
+
+.employee__button {
+  flex: 2;
+}

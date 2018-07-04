@@ -6,7 +6,7 @@ import { Observable, throwError } from 'rxjs';
 @Injectable()
 export class ApiService {
   constructor(private http: Http) {}
-  storeServers(server: any[]) {
+  setUsers() {
     return this.http.get('https://randomuser.me/api/?results=10&inc=name,login,picture,phone,email,date')
     .pipe(
       map(
@@ -14,9 +14,19 @@ export class ApiService {
           const data = response.json();
           data.results.map(element => {
             element.fullName = `${element.name.title}. ${element.name.first} ${element.name.last}`;
-            element.picture = element.picture.medium;
             element.userId = element.login.uuid;
+            element.contacts = {
+              'email': element.email,
+              'phone': element.phone
+            };
+            element.logs = {
+              oldData: element,
+              dateTime: '2010-05-24 19:20:14',
+              author: 'Administrator'
+            };
             delete element.name;
+            delete element.email;
+            delete element.phone;
           });
           return data.results;
         }

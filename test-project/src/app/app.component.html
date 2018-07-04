@@ -1,6 +1,5 @@
 <app-header></app-header>
 <div class="container">
-  <app-employees [employeesList]="employeesList"></app-employees>
-  <dx-text-box [(value)]="name" width="300"></dx-text-box>
-  <dx-button text="DevExt button on Angular!" (click)="setData()"></dx-button>
+  <router-outlet></router-outlet>
+  <!-- <app-employees [employeesList]="employeesList"></app-employees> -->
 </div>

@@ -1,4 +1,8 @@
-<div>
+<div class="employees">
+  <div class="employees__button">
+    <dx-button (click)="setData()" text="Upload employees"></dx-button>
+    <dx-button text="Delete"></dx-button>
+  </div>
   <app-employee 
     *ngFor="let employee of employeesList"
     [employee]="employee"

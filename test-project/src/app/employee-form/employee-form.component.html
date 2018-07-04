@@ -1,3 +1,18 @@
-<p>
-  employee-form works!
-</p>
+<div>
+  <form action="">
+      <div class="form__row">
+        <span class="form__title">Full name</span>
+        <dx-text-box [value]="employee.fullName" [disabled]="true"></dx-text-box>
+      </div>
+      <div class="form__row">
+        <span class="form__title">Photos</span>
+        <dx-button
+          class="employee__button"
+          text="Edit"
+          (click)="fileInput.click()"
+        >
+        </dx-button>
+        <input  #fileInput style="display: none;" type="file" (change)="onFileSelected($event)">
+      </div>
+  </form>
+</div>

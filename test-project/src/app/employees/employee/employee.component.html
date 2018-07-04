@@ -1,14 +1,24 @@
 <div class="employee">
   <dx-check-box
-    [value]="true"
-    [width]="80"
-    text="Check"
+    class="employee__check"
+    [value]="false"
   ></dx-check-box>
-  <img [src]="employee.picture" alt="employee-img">
-  <p>
-    Name:
-    {{employee.fullName}}
-  </p>
-  <a href="tel:+{{employee.phone}}">{{employee.phone}}</a>
-  <a href="mailto:{{employee.email}}">{{employee.email}}</a>
+  <div class="employee__logo">
+    <img [src]="employee.picture.medium" alt="employee-img">
+    <p class="employee__name">
+      {{employee.fullName}}
+    </p>
+  </div>
+  <div class="employee__contacts">
+    <a class="employee__contacts-link" href="tel:+{{employee.contacts.phone}}">{{employee.contacts.phone}}</a>
+    <a class="employee__contacts-link" href="mailto:{{employee.contacts.email}}">{{employee.contacts.email}}</a>
+  </div>
+  <div class="employee__edit">
+    <dx-button
+      class="employee__button"
+      text="Edit"
+      (click)="onEditEmployee(employee.userId)"
+    >
+    </dx-button>
+  </div>
 </div>

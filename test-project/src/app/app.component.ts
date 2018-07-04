@@ -9,20 +9,5 @@ import { ApiService } from './api.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  employeesList = [];
-
-  constructor(private apiService: ApiService) {}
-
-  ngOnInit() {
-    this.setData();
-  }
-
-  setData () {
-    this.apiService.storeServers()
-      .subscribe(
-        (data: any[]) => { this.employeesList = [ ...data ]; console.log(data); },
-        (error) => console.error(error)
-      );
-  }
+export class AppComponent {
 }

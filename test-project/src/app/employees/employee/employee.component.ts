@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee',
@@ -6,11 +7,15 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-  @Input() employee: {};
+  @Input() employee: <any>{};
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    // console.log(this.employee.userId);
   }
 
+  onEditEmployee(employeeId) {
+    this.router.navigate([`/employee-form/${employeeId}`]);
+  }
 }
