@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeComponent } from './employees/employee/employee.component';
-import { PopupComponent } from './popup/popup.component';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { ApiService } from './api.service';
 import { StoreService } from './store.module';
@@ -27,7 +26,6 @@ const appRoutes: Routes = [
     HeaderComponent,
     EmployeesComponent,
     EmployeeComponent,
-    PopupComponent,
     EmployeeFormComponent,
     HomeComponentComponent
   ],

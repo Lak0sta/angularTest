@@ -1,7 +1,7 @@
 <div class="employee">
   <dx-check-box
     class="employee__check"
-    [value]="false"
+    [(value)]="employee.checked"
   ></dx-check-box>
   <div class="employee__logo">
     <img [src]="employee.picture.medium" alt="employee-img">

@@ -10,7 +10,7 @@ import { StoreService } from '../store.module';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
-  employeesList = [];
+  showPopup = false;
 
   constructor(
     private apiService: ApiService,
@@ -18,7 +18,6 @@ export class EmployeesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.employeesList = this.storeService.getUsers();
   }
 
   setData () {
@@ -30,6 +29,19 @@ export class EmployeesComponent implements OnInit {
         },
         (error) => console.error(error)
       );
+  }
+
+  deleteCheckedEmployees() {
+    this.storeService.deleteCheckedEmployees();
+    this.togglePopup();
+  }
+
+  togglePopup () {
+    this.showPopup = !this.showPopup;
+  }
+
+  get getEmployeesList () {
+    return this.storeService.getUsers();
   }
 
 }

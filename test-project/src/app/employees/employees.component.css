@@ -3,3 +3,47 @@
   justify-content: space-between;
   margin-bottom: 20px;
 }
+
+.popup {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: opacity 0.3s ease;
+}
+
+.popup__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30%;
+  max-width: 300px;
+  padding: 55px 20px;
+  margin: 10px auto;
+  border-radius: 5px;
+  color: #000;
+  background: #fff;
+  box-shadow: 0 10px 36px 0 rgba(1, 2, 2, 0.2);
+}
+
+.popup__message {
+  font-family: 'Paytone One', sans-serif;
+  font-size: 18px;
+  color: #E37B37;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.popup__buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+}

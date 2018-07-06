@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { clone, assocPath } from 'ramda';
 
 import { StoreService } from '../store.module';
 
@@ -13,7 +16,12 @@ export class EmployeeFormComponent implements OnInit {
   selectedImage = null;
 
 
-  constructor(private route: ActivatedRoute, private storeService: StoreService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private storeService: StoreService,
+    private sanitizer: DomSanitizer,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.findEmployeeData();
@@ -25,8 +33,7 @@ export class EmployeeFormComponent implements OnInit {
   }
 
   findEmployeeData () {
-    this.employee = this.storeService.getUsers().find(el => el.userId === this.route.snapshot.params['id']);
-    console.log(this.employee);
+    this.employee = clone(this.storeService.getUsers().find(el => el.userId === this.route.snapshot.params['id']));
   }
 
   getBase64 (file) {
@@ -38,5 +45,27 @@ export class EmployeeFormComponent implements OnInit {
     reader.onerror = (error) => {
       console.log('Error: ', error);
     };
+  }
+
+  removePhoto () {
+    this.employee.picture.medium = '';
+    console.log(this.employee);
+  }
+
+  get photoUrl () {
+    return this.sanitizer.bypassSecurityTrustStyle(`url(${this.employee.picture.medium})`);
+  }
+
+  get employeeData () {
+    return this.employee;
+  }
+
+  saveData () {
+    this.storeService.editEmployeesList(this.employee);
+    this.router.navigate(['/employees']);
+  }
+
+  backToTheEmployeesList() {
+    this.router.navigate(['/employees']);
   }
 }

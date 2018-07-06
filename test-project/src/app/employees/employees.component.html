@@ -1,10 +1,33 @@
 <div class="employees">
   <div class="employees__button">
-    <dx-button (click)="setData()" text="Upload employees"></dx-button>
-    <dx-button text="Delete"></dx-button>
+    <dx-button
+      (click)="setData()"
+      text="Upload employees"
+    ></dx-button>
+    <dx-button
+      text="Delete"
+      (click)="togglePopup()"
+    ></dx-button>
   </div>
   <app-employee 
-    *ngFor="let employee of employeesList"
+    *ngFor="let employee of getEmployeesList"
     [employee]="employee"
   ></app-employee>
+  <div *ngIf="showPopup" class="popup">
+    <div class="popup__container">
+      <div class="popup__message">
+        Are you sure that you want to delete these employees?
+      </div>
+      <div class="popup__buttons">
+          <dx-button 
+            (click)="deleteCheckedEmployees()"
+            text="Yes"
+          ></dx-button>
+          <dx-button
+            text="No"
+            (click)="togglePopup()"
+          ></dx-button>
+      </div>
+    </div>
+  </div>
 </div>

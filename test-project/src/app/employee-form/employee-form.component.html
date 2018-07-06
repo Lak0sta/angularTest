@@ -1,18 +1,87 @@
 <div>
-  <form action="">
+  <form action="" class="form">
+      <div class="form__buttons">
+        <div>
+          <dx-button
+            text="Save"
+            (click)="saveData()"
+          >
+          </dx-button>
+        </div>
+        <div>
+          <dx-button
+            class="img__delete"
+            text="Back"
+            (click)="backToTheEmployeesList()"
+          >
+          </dx-button>
+        </div>
+      </div>
       <div class="form__row">
-        <span class="form__title">Full name</span>
-        <dx-text-box [value]="employee.fullName" [disabled]="true"></dx-text-box>
+        <span class="form__title">User ID</span>
+        <dx-text-box [value]="employee.userId" [disabled]="true"></dx-text-box>
       </div>
       <div class="form__row">
         <span class="form__title">Photos</span>
-        <dx-button
-          class="employee__button"
-          text="Edit"
-          (click)="fileInput.click()"
-        >
-        </dx-button>
+        <div class="img">
+          <div class="img__container" [style.backgroundImage]="photoUrl"></div>
+          <div>
+            <dx-button
+              text="Edit"
+              (click)="fileInput.click()"
+            >
+            </dx-button>
+            <dx-button
+              class="img__delete"
+              text="Delete"
+              (click)="removePhoto()"
+            >
+            </dx-button>
+          </div>
+        </div>
         <input  #fileInput style="display: none;" type="file" (change)="onFileSelected($event)">
+      </div>
+      <div class="form__row">
+        <span class="form__title">Full name</span>
+        <dx-text-box [(value)]="employee.fullName" [showClearButton]="true">
+            <dx-validator>
+              <dxi-validation-rule type="required" message="Full name is required"></dxi-validation-rule>
+            </dx-validator>
+        </dx-text-box>
+      </div>
+      <div class="form__row">
+        <span class="form__title">Contact information</span>
+        <div class="form__item">
+          <span class="form__sub-title">Email</span>
+          <dx-text-box [(value)]="employee.contacts.email" [showClearButton]="true"></dx-text-box>
+        </div>
+        <div class="form__item">
+          <span class="form__sub-title">Phone</span>
+          <dx-text-box [(value)]="employee.contacts.phone" [showClearButton]="true"></dx-text-box>
+        </div>
+      </div>
+      <div class="form__row">
+        <span class="form__title">Logs</span>
+        <div class="form__item-two-col">
+          <div class="form__item-col-1">
+              <span class="form__sub-title">Name</span>
+              <dx-text-box [value]="employee.logs.oldData.fullName" [disabled]="true"></dx-text-box>
+          </div>
+          <div class="form__item-col-2">
+              <span class="form__sub-title">Email</span>
+              <dx-text-box [value]="employee.logs.oldData.contacts.email" [disabled]="true"></dx-text-box>
+              <span class="form__sub-title">Phone</span>
+              <dx-text-box [value]="employee.logs.oldData.contacts.email" [disabled]="true"></dx-text-box>
+          </div>
+        </div>
+        <div class="form__item">
+          <span class="form__sub-title">Date of Editing</span>
+          <dx-text-box [value]="employee.logs.dateTime" [disabled]="true"></dx-text-box>
+        </div>
+        <div class="form__item">
+          <span class="form__sub-title">Author</span>
+          <dx-text-box [value]="employee.logs.author" [disabled]="true"></dx-text-box>
+        </div>
       </div>
   </form>
 </div>

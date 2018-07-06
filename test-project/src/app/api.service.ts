@@ -24,6 +24,7 @@ export class ApiService {
               dateTime: '2010-05-24 19:20:14',
               author: 'Administrator'
             };
+            element.checked = false;
             delete element.name;
             delete element.email;
             delete element.phone;
